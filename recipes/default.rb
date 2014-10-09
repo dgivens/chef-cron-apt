@@ -39,6 +39,11 @@ cookbook_file '/etc/cron-apt/action.d/6-autoremove' do
   action :create
 end
 
+cookbook_file '/etc/cron-apt/config.d/apt_env' do
+  source 'config-env'
+  action :create
+end
+
 cron_d 'cron-apt' do
   minute node['cron_apt']['minute']
   hour node['cron_apt']['hour']

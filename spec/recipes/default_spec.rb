@@ -11,21 +11,25 @@ describe 'cron-apt::default' do
     expect(chef_run).to install_package('cron-apt')
   end
 
-  it 'deletes file[/etc/cron-apt/action.d/3-download' do
+  it 'deletes file[/etc/cron-apt/action.d/3-download]' do
     expect(chef_run).to delete_file('/etc/cron-apt/action.d/3-download')
   end
 
-  it 'creates cookbook_file[/etc/cron-apt/action.d/0-update' do
+  it 'creates cookbook_file[/etc/cron-apt/action.d/0-update]' do
     expect(chef_run).to create_cookbook_file('/etc/cron-apt/action.d/0-update')
   end
 
-  it 'creates cookbook_file[/etc/cron-apt/action.d/5-upgrade' do
+  it 'creates cookbook_file[/etc/cron-apt/action.d/5-upgrade]' do
     expect(chef_run).to create_cookbook_file('/etc/cron-apt/action.d/5-upgrade')
   end
 
-  it 'creates cookbook_file[/etc/cron-apt/action.d/6-autoremove' do
+  it 'creates cookbook_file[/etc/cron-apt/action.d/6-autoremove]' do
     expect(chef_run).to create_cookbook_file('/etc/cron-apt/action.d/' \
                                              '6-autoremove')
+  end
+
+  it 'creates cookbook_file[/etc/cron-apt/config.d/apt_env]' do
+    expect(chef_run).to create_cookbook_file('/etc/cron-apt/config.d/apt_env')
   end
 
   it 'creates cron_d[cron-apt]' do
