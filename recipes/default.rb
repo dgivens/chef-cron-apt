@@ -2,7 +2,7 @@
 # Cookbook Name:: cron-apt
 # Recipe:: default
 #
-# Copyright (C) 2014 Rackspace, Inc.
+# Copyright (C) 2014 Daniel Givens
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,8 +40,11 @@ cookbook_file '/etc/cron-apt/action.d/6-autoremove' do
 end
 
 cron_d 'cron-apt' do
-  minute 0
-  hour 4
-  command '/usr/sbin/cron-apt'
+  minute node['cron_apt']['minute']
+  hour node['cron_apt']['hour']
+  day node['cron_apt']['day']
+  month node['cron_apt']['month']
+  weekday node['cron_apt']['weekday']
+  command 'test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt &> /dev/null'
   user 'root'
 end

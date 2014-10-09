@@ -29,6 +29,14 @@ describe 'cron-apt::default' do
   end
 
   it 'creates cron_d[cron-apt]' do
-    expect(chef_run).to create_cron_d('cron-apt')
+    expect(chef_run).to create_cron_d('cron-apt').with(
+      command: 'test -x /usr/sbin/cron-apt && /usr/sbin/cron-apt &> /dev/null',
+      minute: 0,
+      hour: 4,
+      day: '*',
+      month: '*',
+      weekday: '*',
+      user: 'root'
+    )
   end
 end
