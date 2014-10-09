@@ -1,29 +1,32 @@
-# cron-apt-cookbook
+cron-apt Cookbook
+=================
 
-TODO: Enter the cookbook description here.
+Installs and configures cron-apt to automatically update system packages.
 
-## Supported Platforms
 
-TODO: List your supported platforms.
+Requirements
+------------
+Platforms:
 
-## Attributes
+- Debian Wheezy
+- Ubuntu 12.04
+- Ubuntu 14.04
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['cron-apt']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+Dependencies:
 
-## Usage
+- [cron](https://supermarket.getchef.com/cookbooks/cron) cookbook
+
+Attributes
+----------
+
+- ``node['cron_apt']['minute']`` - Minute field for cron-apt cronjob
+- ``node['cron_apt']['hour']`` - Hour field for cron-apt cronjob
+- ``node['cron_apt']['day']`` - Day field for cron-apt cronjob
+- ``node['cron_apt']['month']`` - Month field for cron-apt cronjob
+- ``node['cron_apt']['weekday']`` - Day of week field for cron-apt cronjob
+
+Usage
+-----
 
 ### cron-apt::default
 
@@ -37,6 +40,23 @@ Include `cron-apt` in your node's `run_list`:
 }
 ```
 
-## License and Authors
+License and Authors
+-------------------
 
-Author:: Rackspace, Inc. (<daniel.givens@rackspace.com>)
+- Author:: Daniel Givens (<daniel@givens.io>)
+
+```text
+Copyright (C) 2014 Daniel Givens
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
