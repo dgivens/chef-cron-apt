@@ -6,3 +6,4 @@ description      'Installs/Configures cron-apt'
 long_description 'Installs/Configures cron-apt'
 version          '0.1.0'
 
+depends          'cron'
