@@ -12,5 +12,10 @@ end
 
 describe file('/etc/cron.d/cron-apt') do
   it { should be_file }
-  it { should contain '0 4 * * * root /usr/sbin/cron-apt' }
+  it { should contain '0 4 * * * root test -x /usr/sbin/cron-apt && ' \
+                      '/usr/sbin/cron-apt &> /dev/null' }
+end
+
+describe command('/usr/sbin/cron-apt') do
+  its(:exit_status) { should eq 0 }
 end
